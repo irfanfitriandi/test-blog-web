@@ -15,7 +15,7 @@ const Card = ({ id, body, category, date, img, title }: ICard) => {
       <img className="aspect-[4/3] object-cover" src={img} alt={title} />
       <div className="p-4 space-y-2">
         <span className="text-xs lg:text-sm">{`${category} - ${date}`}</span>
-        <h6 className="capitalize font-semibold">{title}</h6>
+        <h3 className="capitalize font-semibold">{title}</h3>
         <p>{body}</p>
       </div>
     </Link>

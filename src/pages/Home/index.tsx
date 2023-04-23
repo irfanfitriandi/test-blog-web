@@ -14,6 +14,7 @@ import { BsSearch } from "react-icons/bs";
 import PostTypes from "shared/types/post";
 import { POST_DATA } from "shared/constants/post";
 import { CATEGORIES } from "shared/constants/categories";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -47,6 +48,29 @@ const Home = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <meta
+          name="description"
+          content="Breaking news, sport, TV, radio and a whole lot more."
+        />
+        <meta name="keywords" content="News, Blog news, Culture" />
+        <meta name="author" content="Irfan Fitriandi" />
+        <link rel="canonical" href="https://cfbv.vercel.app/" />
+        <title>DaBBa News</title>
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cfbv.vercel.app/" />
+        <meta property="og:title" content="DaBBa News" />
+        <meta
+          property="og:description"
+          content="Breaking news, sport, TV, radio and a whole lot more."
+        />
+        <meta
+          property="og:image"
+          content="https://user-images.githubusercontent.com/119382082/233851968-99bbd2ba-368e-4841-9501-80b4aaaaca54.png"
+        />
+      </Helmet>
       {isLoading ? (
         <Loading />
       ) : (

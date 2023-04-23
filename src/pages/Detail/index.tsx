@@ -10,6 +10,7 @@ import Loading from "components/Loading";
 import { POST_DATA } from "shared/constants/post";
 import PostTypes from "shared/types/post";
 import { useTitle } from "shared/hooks/useTitle";
+import { Helmet } from "react-helmet";
 
 const Detail = () => {
   const { id }: any = useParams();
@@ -39,10 +40,27 @@ const Detail = () => {
   const isAvailable = newData?.some((data) => data.id === +id);
   const detailPost = newData?.find((data) => data.id === +id);
 
-  useTitle(`${detailPost?.title}`);
+  // useTitle(`${detailPost?.title}`);
 
   return (
     <Layout>
+      <Helmet>
+        <meta name="description" content={detailPost?.body} />
+        <meta name="keywords" content="News, Blog news, Culture" />
+        <meta name="author" content="Irfan Fitriandi" />
+        <link rel="canonical" href="https://cfbv.vercel.app/" />
+        <title>{detailPost?.title.toUpperCase()}</title>
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cfbv.vercel.app/" />
+        <meta property="og:title" content={detailPost?.title} />
+        <meta property="og:description" content={detailPost?.body} />
+        <meta
+          property="og:image"
+          content="https://user-images.githubusercontent.com/119382082/233851968-99bbd2ba-368e-4841-9501-80b4aaaaca54.png"
+        />
+      </Helmet>
       {!isAvailable ? (
         <NotFound />
       ) : isLoading ? (
